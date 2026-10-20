@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Modern Glassmorphism</title>
+    <!-- Font Google: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Arquivo CSS Externo na pasta src/css -->
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+
+    <!-- Ambient Glow Background Spheres -->
+    <div class="ambient-sphere sphere-1"></div>
+    <div class="ambient-sphere sphere-2"></div>
+
+    <main class="app-container">
+        <!-- Header com Título e Botão do Histórico -->
+        <header class="calculator-header">
+            <span class="brand-title">Calc Glass</span>
+            <button class="history-toggle-btn" id="historyToggleBtn" aria-label="Alternar Histórico">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+                <span>Histórico</span>
+            </button>
+        </header>
+
+        <!-- Painel Retrátil de Histórico -->
+        <section class="history-panel" id="historyPanel" aria-label="Histórico de Cálculos">
+            <div class="history-header">
+                <span class="history-title">Recentes</span>
+                <button class="clear-history-btn" id="clearHistoryBtn">Limpar</button>
+            </div>
+            <ul class="history-list" id="historyList">
+                <li class="history-empty">Nenhum cálculo recente</li>
+            </ul>
+        </section>
+
+        <!-- Display do Resultado e Expressão -->
+        <section class="display-container" aria-live="polite">
+            <div class="expression-display" id="expressionDisplay"></div>
+            <div class="result-display" id="resultDisplay">0</div>
+        </section>
+
+        <!-- Teclado Numérico e Operadores -->
+        <section class="keypad">
+            <button class="btn btn-function" data-action="clear" data-key="Escape">C</button>
+            <button class="btn btn-function" data-action="backspace" data-key="Backspace">⌫</button>
+            <button class="btn btn-operator" data-action="percent" data-key="%">%</button>
+            <button class="btn btn-operator" data-action="operator" data-value="/" data-key="/">÷</button>
+
+            <button class="btn" data-action="number" data-value="7" data-key="7">7</button>
+            <button class="btn" data-action="number" data-value="8" data-key="8">8</button>
+            <button class="btn" data-action="number" data-value="9" data-key="9">9</button>
+            <button class="btn btn-operator" data-action="operator" data-value="*" data-key="*">×</button>
+
+            <button class="btn" data-action="number" data-value="4" data-key="4">4</button>
+            <button class="btn" data-action="number" data-value="5" data-key="5">5</button>
+            <button class="btn" data-action="number" data-value="6" data-key="6">6</button>
+            <button class="btn btn-operator" data-action="operator" data-value="-" data-key="-">−</button>
+
+            <button class="btn" data-action="number" data-value="1" data-key="1">1</button>
+            <button class="btn" data-action="number" data-value="2" data-key="2">2</button>
+            <button class="btn" data-action="number" data-value="3" data-key="3">3</button>
+            <button class="btn btn-operator" data-action="operator" data-value="+" data-key="+">+</button>
+
+            <button class="btn" data-action="toggle-sign">±</button>
+            <button class="btn" data-action="number" data-value="0" data-key="0">0</button>
+            <button class="btn" data-action="decimal" data-value="." data-key=".">,</button>
+            <button class="btn btn-equals" data-action="calculate" data-key="Enter">=</button>
+        </section>
+    </main>
+
+    <!-- Arquivo JavaScript Externo na pasta src/js -->
+    <script src="src/js/script.js"></script>
+</body>
+</html>

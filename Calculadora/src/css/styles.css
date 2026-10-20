@@ -1,0 +1,365 @@
+/* STREAMING_CHUNK:Configuring CSS Variables and Global Rules... */
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+-webkit-tap-highlight-color: transparent;
+user-select: none;
+}
+
+:root {
+--bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+--glass-bg: rgba(30, 41, 59, 0.7);
+--glass-border: rgba(255, 255, 255, 0.08);
+--glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+
+--btn-bg-num: rgba(255, 255, 255, 0.05);
+--btn-bg-num-hover: rgba(255, 255, 255, 0.12);
+--btn-bg-op: rgba(99, 102, 241, 0.15);
+--btn-bg-op-hover: rgba(99, 102, 241, 0.3);
+--btn-bg-func: rgba(239, 68, 68, 0.15);
+--btn-bg-func-hover: rgba(239, 68, 68, 0.3);
+--btn-bg-equals: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+--btn-bg-equals-hover: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+
+--text-primary: #f8fafc;
+--text-secondary: #94a3b8;
+--accent-color: #818cf8;
+--accent-glow: rgba(129, 140, 248, 0.4);
+--error-color: #f87171;
+
+
+}
+
+body {
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background: var(--bg-gradient);
+background-attachment: fixed;
+color: var(--text-primary);
+padding: 1rem;
+overflow-x: hidden;
+}
+
+/* STREAMING_CHUNK:Styling Ambient Background Effects... */
+.ambient-sphere {
+position: fixed;
+border-radius: 50%;
+filter: blur(80px);
+z-index: 0;
+pointer-events: none;
+}
+.sphere-1 {
+width: 300px;
+height: 300px;
+background: rgba(99, 102, 241, 0.25);
+top: 10%;
+left: 15%;
+}
+.sphere-2 {
+width: 350px;
+height: 350px;
+background: rgba(168, 85, 247, 0.2);
+bottom: 10%;
+right: 15%;
+}
+
+/* STREAMING_CHUNK:Styling Main Container and Glassmorphism... */
+.app-container {
+position: relative;
+z-index: 1;
+width: 100%;
+max-width: 400px;
+background: var(--glass-bg);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid var(--glass-border);
+border-radius: 28px;
+box-shadow: var(--glass-shadow);
+padding: 24px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+transition: all 0.3s ease;
+}
+
+.calculator-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 4px;
+}
+
+.brand-title {
+font-size: 0.85rem;
+font-weight: 600;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: var(--text-secondary);
+}
+
+.history-toggle-btn {
+background: var(--btn-bg-num);
+border: 1px solid var(--glass-border);
+color: var(--text-secondary);
+padding: 8px 12px;
+border-radius: 12px;
+cursor: pointer;
+font-size: 0.85rem;
+display: flex;
+align-items: center;
+gap: 6px;
+transition: all 0.2s ease;
+}
+
+.history-toggle-btn:hover {
+background: var(--btn-bg-num-hover);
+color: var(--text-primary);
+}
+
+.history-toggle-btn.active {
+background: var(--btn-bg-op);
+color: var(--accent-color);
+border-color: rgba(129, 140, 248, 0.3);
+}
+
+/* STREAMING_CHUNK:Styling Calculator Display... */
+.display-container {
+background: rgba(15, 23, 42, 0.5);
+border: 1px solid var(--glass-border);
+border-radius: 20px;
+padding: 18px 20px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: flex-end;
+min-height: 110px;
+word-break: break-all;
+position: relative;
+overflow: hidden;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.expression-display {
+font-size: 0.95rem;
+color: var(--text-secondary);
+min-height: 1.4rem;
+margin-bottom: 6px;
+font-weight: 400;
+letter-spacing: 0.5px;
+transition: color 0.2s;
+}
+
+.result-display {
+font-size: 2.25rem;
+font-weight: 700;
+color: var(--text-primary);
+line-height: 1.1;
+letter-spacing: -0.5px;
+transition: transform 0.1s ease, color 0.2s;
+}
+
+.result-display.error {
+color: var(--error-color);
+font-size: 1.4rem;
+}
+
+/* STREAMING_CHUNK:Styling History Panel... */
+.history-panel {
+max-height: 0;
+overflow: hidden;
+opacity: 0;
+transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease;
+background: rgba(15, 23, 42, 0.4);
+border-radius: 16px;
+border: 0px solid var(--glass-border);
+}
+
+.history-panel.open {
+max-height: 220px;
+opacity: 1;
+border-width: 1px;
+padding: 12px;
+overflow-y: auto;
+}
+
+.history-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 8px;
+padding-bottom: 6px;
+border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.history-title {
+font-size: 0.75rem;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+color: var(--text-secondary);
+}
+
+.clear-history-btn {
+background: transparent;
+border: none;
+color: var(--error-color);
+font-size: 0.75rem;
+cursor: pointer;
+opacity: 0.8;
+transition: opacity 0.2s;
+}
+
+.clear-history-btn:hover {
+opacity: 1;
+text-decoration: underline;
+}
+
+.history-list {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.history-item {
+padding: 8px 10px;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.03);
+cursor: pointer;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.history-item:hover {
+background: rgba(255, 255, 255, 0.08);
+transform: translateX(-2px);
+}
+
+.history-item-exp {
+font-size: 0.75rem;
+color: var(--text-secondary);
+}
+
+.history-item-res {
+font-size: 1rem;
+font-weight: 600;
+color: var(--accent-color);
+}
+
+.history-empty {
+text-align: center;
+color: var(--text-secondary);
+font-size: 0.85rem;
+padding: 16px 0;
+}
+
+.history-panel::-webkit-scrollbar {
+width: 4px;
+}
+.history-panel::-webkit-scrollbar-track {
+background: transparent;
+}
+.history-panel::-webkit-scrollbar-thumb {
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+}
+
+/* STREAMING_CHUNK:Styling Keypad Buttons... */
+.keypad {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 12px;
+}
+
+.btn {
+border: 1px solid var(--glass-border);
+outline: none;
+height: 62px;
+border-radius: 16px;
+font-size: 1.25rem;
+font-weight: 500;
+color: var(--text-primary);
+background: var(--btn-bg-num);
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+position: relative;
+overflow: hidden;
+}
+
+.btn:hover {
+background: var(--btn-bg-num-hover);
+transform: translateY(-2px);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active, .btn.pressed {
+transform: translateY(1px);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-operator {
+background: var(--btn-bg-op);
+color: var(--accent-color);
+font-weight: 600;
+}
+
+.btn-operator:hover {
+background: var(--btn-bg-op-hover);
+}
+
+.btn-function {
+background: var(--btn-bg-func);
+color: #fca5a5;
+font-weight: 600;
+}
+
+.btn-function:hover {
+background: var(--btn-bg-func-hover);
+}
+
+.btn-equals {
+background: var(--btn-bg-equals);
+color: #ffffff;
+font-weight: 600;
+box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn-equals:hover {
+background: var(--btn-bg-equals-hover);
+box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn.active-key {
+filter: brightness(1.4);
+transform: scale(0.96);
+}
+
+/* STREAMING_CHUNK:Adding Responsive Media Queries... */
+@media (max-height: 680px) {
+.app-container {
+padding: 16px;
+gap: 12px;
+}
+.btn {
+height: 52px;
+font-size: 1.1rem;
+border-radius: 12px;
+}
+.display-container {
+min-height: 90px;
+padding: 12px 16px;
+}
+.result-display {
+font-size: 1.8rem;
+}
+}
