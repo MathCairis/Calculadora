@@ -1,4 +1,4 @@
-/* STREAMING_CHUNK:Defining Calculator Logic Class... */
+
 class Calculator {
 constructor(expressionElem, resultElem, historyListElem) {
 this.expressionElem = expressionElem;
@@ -13,7 +13,7 @@ this.historyListElem = historyListElem;
     this.updateDisplay();
 }
 
-/* STREAMING_CHUNK:Formatting Display Methods... */
+
 updateDisplay() {
     this.resultElem.textContent = this.formatNumber(this.currentInput);
     this.expressionElem.textContent = this.formatExpression(this.expression);
@@ -89,7 +89,7 @@ toggleSign() {
     this.updateDisplay();
 }
 
-/* STREAMING_CHUNK:Applying Relative Percentage Logic... */
+
 applyPercent() {
     if (this.isErrorState()) return;
 
@@ -252,7 +252,7 @@ calculate() {
     this.updateDisplay();
 }
 
-/* STREAMING_CHUNK:Managing History Panel... */
+
 addToHistory(exp, res) {
     this.history.unshift({ exp, res });
     if (this.history.length > 20) this.history.pop();
@@ -292,7 +292,7 @@ renderHistory() {
 
 }
 
-/* STREAMING_CHUNK:Initializing Application and Event Listeners... */
+
 window.onload = function () {
 const expressionDisplay = document.getElementById('expressionDisplay');
 const resultDisplay = document.getElementById('resultDisplay');
