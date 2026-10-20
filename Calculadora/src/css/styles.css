@@ -1,4 +1,4 @@
-/* STREAMING_CHUNK:Configuring CSS Variables and Global Rules... */
+
 
 *{
 margin: 0;
@@ -45,7 +45,7 @@ padding: 1rem;
 overflow-x: hidden;
 }
 
-/* STREAMING_CHUNK:Styling Ambient Background Effects... */
+
 .ambient-sphere {
 position: fixed;
 border-radius: 50%;
@@ -68,7 +68,7 @@ bottom: 10%;
 right: 15%;
 }
 
-/* STREAMING_CHUNK:Styling Main Container and Glassmorphism... */
+
 .app-container {
 position: relative;
 z-index: 1;
@@ -127,7 +127,7 @@ color: var(--accent-color);
 border-color: rgba(129, 140, 248, 0.3);
 }
 
-/* STREAMING_CHUNK:Styling Calculator Display... */
+
 .display-container {
 background: rgba(15, 23, 42, 0.5);
 border: 1px solid var(--glass-border);
@@ -168,7 +168,7 @@ color: var(--error-color);
 font-size: 1.4rem;
 }
 
-/* STREAMING_CHUNK:Styling History Panel... */
+
 .history-panel {
 max-height: 0;
 overflow: hidden;
@@ -344,7 +344,7 @@ filter: brightness(1.4);
 transform: scale(0.96);
 }
 
-/* STREAMING_CHUNK:Adding Responsive Media Queries... */
+
 @media (max-height: 680px) {
 .app-container {
 padding: 16px;
